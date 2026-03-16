@@ -3,6 +3,36 @@
 }
 
 <div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://learn.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+    <h1 class="display-4">Welcome to Library Management System</h1>
+    <p>Manage your books, members, and loans efficiently.</p>
+    
+    <div class="row mt-5">
+        <div class="col-md-4">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">Books</h5>
+                    <p class="card-text">Manage your book collection</p>
+                    <a asp-controller="Books" asp-action="Index" class="btn btn-primary">Go to Books</a>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">Members</h5>
+                    <p class="card-text">Manage library members</p>
+                    <a asp-controller="Members" asp-action="Index" class="btn btn-primary">Go to Members</a>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">Loans</h5>
+                    <p class="card-text">Track book loans and returns</p>
+                    <a asp-controller="Loans" asp-action="Index" class="btn btn-primary">Go to Loans</a>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>

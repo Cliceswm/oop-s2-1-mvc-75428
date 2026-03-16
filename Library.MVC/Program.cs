@@ -1,6 +1,7 @@
 using Library.MVC.Data;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.DependencyInjection;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -42,5 +43,33 @@ app.MapControllerRoute(
 
 app.MapRazorPages()
    .WithStaticAssets();
-
+// Seed admin user role 
+using (var scope = app.Services.CreateScope())
+{
+    var services = scope.ServiceProvider;
+    try
+    {
+        await SeedData.SeedAdminUser(services);
+        Console.WriteLine("✅ Admin user seeded successfully!");
+    }
+    catch (Exception ex)
+    {
+        var logger = services.GetRequiredService<ILogger<Program>>();
+        logger.LogError(ex, "❌ An error occurred while seeding the database.");
+    }
+}
+// SEED FAKE DATA WITH BOGUS
+using (var scope = app.Services.CreateScope())
+{
+    var services = scope.ServiceProvider;
+    try
+    {
+        await SeedDataFake.Initialize(services);
+    }
+    catch (Exception ex)
+    {
+        var logger = services.GetRequiredService<ILogger<Program>>();
+        logger.LogError(ex, " An error occurred while generating fake data.");
+    }
+}
 app.Run();

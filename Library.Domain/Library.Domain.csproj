@@ -5,5 +5,13 @@
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
   </PropertyGroup>
-
+	
+	<ItemGroup>
+		<Folder Include="NewFolder\" />
+	</ItemGroup>
+	
+	<ItemGroup>
+	  <PackageReference Include="Bogus" Version="35.6.5" />
+	</ItemGroup>
+	
 </Project>
